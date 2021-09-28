@@ -26,25 +26,25 @@ def main():
     args = parser.parse_args()
 
     for filename in args.filename:
-       creation_epoch = creation_date(filename)
-       creation_formated = time.strftime(timeStampFormat, time.localtime(creation_epoch))
-       creation = creation_formated
-       folder = os.path.dirname(filename)
+        creation_epoch = creation_date(filename)
+        creation_formated = time.strftime(timeStampFormat, time.localtime(creation_epoch))
+        creation = creation_formated
+        folder = os.path.dirname(filename)
 
-       if args.suffix == '':
-           newfilename = creation_formated + '_' + os.path.basename(filename)
-       else:
-            newfilename = creation_formated + '_' + args.suffix + '_' + os.path.basename(filename)
+        if args.suffix == '':
+            newfilename = creation_formated + '_' + os.path.basename(filename)
+        else:
+                newfilename = creation_formated + '_' + args.suffix + '_' + os.path.basename(filename)
 
-       newfile = os.path.join(folder, newfilename)
+        newfile = os.path.join(folder, newfilename)
 
-       if args.execute:
-         os.rename(filename, newfile)
+        if args.execute:
+            os.rename(filename, newfile)
 
-       print filename, newfile
-
+        print(filename, newfile)
+    
     if not args.execute:
-	print 'This was a dry run. No file was modified. If you want to rename files use the --execute option.'
+        print('This was a dry run. No file was modified. If you want to rename files use the --execute option.')
 
 if __name__ == "__main__":
         main()
