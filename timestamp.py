@@ -25,6 +25,11 @@ def main():
     parser.add_argument('--suffix', nargs='?', default='')
     args = parser.parse_args()
 
+    # Header 
+    if (len(args.filename) > 0):
+        print("OLD_NAME NEW_NAME")
+
+    # Process old names and new names=
     for filename in args.filename:
         creation_epoch = creation_date(filename)
         creation_formated = time.strftime(timeStampFormat, time.localtime(creation_epoch))
@@ -44,6 +49,7 @@ def main():
         print(filename, newfile)
     
     if not args.execute:
+        print()
         print('This was a dry run. No file was modified. If you want to rename files use the --execute option.')
 
 if __name__ == "__main__":
